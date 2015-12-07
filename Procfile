@@ -1,1 +1,2 @@
-web: waitress-serve --port=8000 mysite.wsgi:application
+web: python manage.py runserver 127.0.0.1:8000 --noreload
+
