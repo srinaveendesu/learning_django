@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
+from django.shortcuts import render_to_response
 from django.utils import timezone
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
@@ -7,6 +8,24 @@ from .forms import PostForm, CommentForm
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+
+#######################################################################
+#                     Clean Blog content                              #
+#######################################################################
+
+
+def blog(request):
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    return render(request, 'blog/blog.html', {'posts': posts})
+
+def blog_post_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    return render(request, 'blog/post.html', {'post': post})
+
+
+#######################################################################
+#                    Normal Blog content                              #
+#######################################################################
 
 
 def post_list(request):
