@@ -13,6 +13,9 @@ from django.contrib.auth.decorators import login_required
 #                     Clean Blog content                              #
 #######################################################################
 
+def blog_about(request):
+    return render_to_response('blog/about.html')
+    #return render(request, 'blog/about.html', {})
 
 ##def blog(request):
 ##    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
