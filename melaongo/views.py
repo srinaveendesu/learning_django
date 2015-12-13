@@ -13,8 +13,11 @@ from django.contrib.auth.decorators import login_required
 #                     Clean Blog content                              #
 #######################################################################
 
+def blog_contact(request):
+    return render_to_response('blog/blog_contact.html')
+
 def blog_about(request):
-    return render_to_response('blog/about.html')
+    return render_to_response('blog/blog_about.html')
     #return render(request, 'blog/about.html', {})
 
 ##def blog(request):

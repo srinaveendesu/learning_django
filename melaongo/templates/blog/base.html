@@ -67,14 +67,14 @@
         <li><a href="{% url 'post_draft_list' %}" ><span class="glyphicon glyphicon-edit"></span></a></li>
 
                     <li>
-                        <a href="{% url 'melaongo.views.post_list' %}">Contact</a>
+                        <a href="{% url 'melaongo.views.blog_contact' %}">Contact</a>
                     </li>
 					
 		<li><a href="{% url 'django.contrib.auth.views.logout' %}">Log out</a></li>
 		
         {% else %}
                     <li>
-                        <a href="{% url 'melaongo.views.post_list' %}">Contact</a>
+                        <a href="{% url 'melaongo.views.blog_contact' %}">Contact</a>
                     </li>
         <li><a href="{% url 'django.contrib.auth.views.login' %}"><span class="glyphicon glyphicon-lock"></span></a></li>
 		

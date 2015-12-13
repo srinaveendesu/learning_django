@@ -14,6 +14,7 @@ urlpatterns = [
     url(r'^blog/comment/(?P<pk>[0-9]+)/approve/$', views.comment_approve, name='comment_approve'),
     url(r'^blog/comment/(?P<pk>[0-9]+)/remove/$', views.comment_remove, name='comment_remove'),
     url(r'^blog/about/$',views.blog_about, name='blog_about'),
+    url(r'^blog/contact/$',views.blog_contact, name='blog_contact'),
     #url(r'^blog/',views.blog),
     #url(r'^blog/post/(?P<pk>[0-9]+)/$', views.blog_post_detail, name='blog_post_detail'),
 ]
