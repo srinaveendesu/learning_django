@@ -19,6 +19,6 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^blog/accounts/login/$', 'django.contrib.auth.views.login'),
-    url(r'^blog/accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}),
+    url(r'^blog/accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page': '/blog'}),
     url(r'', include('melaongo.urls')),
 ]
