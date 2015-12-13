@@ -23,7 +23,7 @@
     </div>
 	
 <hr>
-<a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
+
 {% for comment in post.comments.all %}
     {% if user.is_authenticated or comment.approved_comment %}
     <div class="comment">
@@ -41,5 +41,5 @@
 {% empty %}
     <p>No comments here yet </p>
 {% endfor %}
-
+<a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
 {% endblock %}
