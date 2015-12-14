@@ -3,9 +3,34 @@
 {% block content %}
     <h1>New comment</h1>
     <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
+	
+        <!-- {{ form.as_p }} !-->
+         <!--
+        <p><label for="id_author">Author:</label> <input id="id_author" maxlength="200" name="author" type="text" /></p>
+<p><label for="id_text">Text:</label> <textarea cols="40" id="id_text" name="text" rows="10">
+</textarea></p>		
+		!-->
+		
+					<div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label for="id_author">Author</label>
+                            <input type="text" class="form-control" name="author" placeholder="Author" id="id_author" required data-validation-required-message="Please enter your name.">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label for="id_text">Comment</label>
+                            <textarea rows="5" class="form-control" name="text" placeholder="Comment" id="id_text" required data-validation-required-message="Please enter a Comment."></textarea>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    	
+		
+		
         <button type="submit" class="save btn btn-default">Send</button>
     </form>
 
-
+	
 {% endblock %}
