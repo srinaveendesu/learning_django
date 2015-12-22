@@ -3,9 +3,14 @@ from django.shortcuts import redirect
 from django.shortcuts import render_to_response
 from django.utils import timezone
 from .models import Post, Comment
-from .forms import PostForm, CommentForm
+from .forms import PostForm, CommentForm, ContactForm
 
 from django.contrib.auth.decorators import login_required
+
+
+from django.template.loader import get_template
+from django.core.mail import EmailMessage
+from django.template import Context
 
 # Create your views here.
 
@@ -14,7 +19,36 @@ from django.contrib.auth.decorators import login_required
 #######################################################################
 
 def blog_contact(request):
-    return render_to_response('blog/blog_contact.html')
+    form_class = ContactForm
+
+    # new logic!
+    if request.method == 'POST':
+        form = form_class(data=request.POST)
+
+        if form.is_valid():
+            contact_name = request.POST.get('contact_name', '')
+            contact_email = request.POST.get('contact_email', '')
+            contact_number = request.POST.get('contact_number', '')
+            contact_message = request.POST.get('contact_message', '')
+
+            # Email the profile with the 
+            # contact information
+            template = get_template('blog/contact_template.txt')
+            context = Context({'contact_name': contact_name, 'contact_email': contact_email,'contact_number': contact_number, 'contact_message': contact_message,})
+            content = template.render(context)
+            #print content
+
+            email = EmailMessage(
+                "Message from MELAONGO",
+                content,
+                " melaongo " +'<melaongo.heroku.com>',
+                ['srinaveen.desu@gmail.com'],
+                headers = {'Reply-To': contact_email }
+            )
+            email.send()
+            return redirect('melaongo.views.blog_contact')
+        
+    return render(request, 'blog/blog_contact.html', {'form': form_class,})
 
 def blog_about(request):
     return render_to_response('blog/blog_about.html')
