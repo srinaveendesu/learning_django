@@ -6,7 +6,7 @@ from .models import Post, Comment
 from .forms import PostForm, CommentForm, ContactForm
 
 from django.contrib.auth.decorators import login_required
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from django.template.loader import get_template
 from django.core.mail import EmailMessage
@@ -69,7 +69,17 @@ def blog_about(request):
 
 
 def post_list(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    posts_list = Post.objects.all().filter(published_date__lte=timezone.now()).order_by('published_date').reverse()
+    paginator = Paginator(posts_list, 5)
+
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+        
     return render(request, 'blog/post_list.html', {'posts': posts})
 
 def post_detail(request, pk):
