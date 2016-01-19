@@ -3,6 +3,7 @@
 {% block content %}
 
 					{% for post in posts %}
+					{% autoescape off%}
 			            <h2 class="post-title">
                             <a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
                         </h2>
@@ -11,6 +12,7 @@
 					<p class="post-meta">Posted by <a href="http://srinaveen.appspot.com">Srinaveen Desu</a> on {{ post.published_date }}</p>
 					<a href="{% url 'melaongo.views.post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a>
 					<hr>
+					{% endautoescape %}
 					{% endfor %}
 
 

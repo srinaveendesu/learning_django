@@ -1,6 +1,8 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
+
+{% autoescape off%}
     <div class="post">
         {% if post.published_date %}
             <div class="date">
@@ -21,7 +23,8 @@
         <h1>{{ post.title }}</h1>
         <p>{{ post.text|linebreaks }}</p>
     </div>
-	
+{% endautoescape %}
+
 <hr>
 
 {% for comment in post.comments.all %}
