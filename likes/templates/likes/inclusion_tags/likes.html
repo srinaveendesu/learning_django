@@ -1,0 +1,19 @@
+{% load i18n %}
+
+{% if import_js %}
+    <script type="text/javascript" src="{{ STATIC_URL }}likes/includes/likes.js"></script>
+{% endif %}
+
+{% if likes_enabled %}
+    
+        {{ content_obj.vote_total }}
+        <span>
+            {% if can_vote %}
+                <a class="liker" href="{% url 'like' content_type content_obj.id 1 %}" rel="nofollow"><span class="glyphicon glyphicon-thumbs-up"></span>{% trans " " %}</a>
+            {% else %}
+               <!-- {% trans " Likes" %} !-->
+				 <a><span class="glyphicon glyphicon-thumbs-up"></span>{% trans " " %}</a>
+            {% endif %}
+        </span>
+   
+{% endif %}

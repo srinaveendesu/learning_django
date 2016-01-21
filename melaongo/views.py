@@ -12,6 +12,8 @@ from django.template.loader import get_template
 from django.core.mail import EmailMessage
 from django.template import Context
 
+from likes.middleware import SecretBallotUserIpUseragentMiddleware
+
 # Create your views here.
 
 #######################################################################
@@ -79,6 +81,9 @@ def post_list(request):
         posts = paginator.page(1)
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
+
+    sbp = SecretBallotUserIpUseragentMiddleware()
+    sbp.process_request(request)
         
     return render(request, 'blog/post_list.html', {'posts': posts})
 

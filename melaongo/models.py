@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 from django.utils import timezone
-
+import secretballot
 
 class Post(models.Model):
     author = models.ForeignKey('auth.User')
@@ -22,6 +22,8 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+secretballot.enable_voting_on(Post)
 
 class Comment(models.Model):
     post = models.ForeignKey('melaongo.Post', related_name='comments')

@@ -39,6 +39,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'melaongo',
+    'secretballot',
+    'likes',
 )
 
 MIDDLEWARE_CLASSES = (
