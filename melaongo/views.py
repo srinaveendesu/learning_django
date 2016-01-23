@@ -53,8 +53,8 @@ def blog_contact(request):
     return render(request, 'blog/blog_contact.html', {'form': form_class,})
 
 def blog_about(request):
-    return render_to_response('blog/blog_about.html')
-    #return render(request, 'blog/about.html', {})
+    #return render_to_response('blog/blog_about.html')
+    return render(request, 'blog/blog_about.html')
 
 ##def blog(request):
 ##    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')

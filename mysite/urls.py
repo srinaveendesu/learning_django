@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^blog/accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page': '/blog'}),
     url(r'', include('melaongo.urls')),
     url(r'^likes/', include('likes.urls')),
+    url(r'^accounts/', include('allauth.urls')),
 ]
