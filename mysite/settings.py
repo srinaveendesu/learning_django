@@ -147,10 +147,10 @@ LOGIN_REDIRECT_URL = '/blog'
 
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-DEFAULT_FROM_EMAIL = 'testing@example.com'
+DEFAULT_FROM_EMAIL = 'teammelaongo@melaongo.com'
 
 EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_USER = 'srinaveen.desu'
+EMAIL_HOST_PASSWORD = 'Kinnu@1991'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
