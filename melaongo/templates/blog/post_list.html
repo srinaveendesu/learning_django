@@ -21,27 +21,80 @@
 					{% endfor %}
 
 
+					<!-- Pager -->
     <!-- Comment section -->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+   <div class="container">  
+         <div class="row"> 
+            <div class="col-lg-8 col-md-10 col-md-offset-1"> 
                 
-                <!-- Pager -->
+
+
+                <!--
                 <ul class="pager">
                     <li class="next">
-					
-					{% if posts.has_next %}
-						<a href="?page={{ posts.next_page_number }}">Older Posts &rarr;</a>
-					{%endif %}
+                   
+                    {% if posts.has_next %}
+                        <a href="?page={{ posts.next_page_number }}">Older Posts &rarr;</a>
+                    {%endif %}
+                   
+                    <span class="current">
+                    Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+                    </span>
 
-					{% if posts.has_previous %}
-						<a href="?page={{ posts.previous_page_number }}">&larr; Newer Posts</a>
-					{%endif %}					
-					
+                    {% if posts.has_previous %}
+                        <a href="?page={{ posts.previous_page_number }}">&larr; Newer Posts</a>
+                    {%endif %}                   
+                   
                     </li>
                 </ul>
-            </div>
-        </div>
-    </div>
+                -->
+               
+
+
+  <nav>
+    <ul class="pagination">
+      {% if posts.has_previous %}
+        <li>
+          <a href="?page={{ posts.previous_page_number }}">
+            <span>&larr; Newer Posts</span>
+          </a>
+        </li>
+      {% else %}
+        <li class="disabled">
+          <a href="#">
+            <span>&larr; Newer Posts</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {% if posts.paginator.num_pages > 1 %}
+      {% for page in posts.paginator.page_range %}
+        <li {% if page == posts.number %}class="active"{% endif %}>
+          <a href="?page={{ page }}">{{ page }}</a>
+        </li>
+      {% endfor %}
+      {% endif %}
+
+      {% if posts.has_next %}
+        <li>
+          <a href="?page={{ posts.next_page_number }}">
+            <span>Older Posts &rarr;</span>
+          </a>
+        </li>
+      {% else %}
+        <li {% if not posts.has_next %}class="disabled"{% endif %}>
+          <a href="#">
+            <span>Older Posts &rarr;</span>
+          </a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+  
+				
+				
+            </div> 
+        </div>  
+    </div> 
 	
 {% endblock content %}
