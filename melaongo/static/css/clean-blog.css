@@ -479,3 +479,11 @@ a.socialIcon:hover, .socialHoverClass {
     -ms-transition: all 0.8s;
     transition: all 0.8s;
 }
+
+
+/*=========================
+  rounded pagination
+ ================= */
+ 
+ 
+ .pagination>li>a, .pagination>li>span { border-radius: 50% !important;margin: 0 5px;}
