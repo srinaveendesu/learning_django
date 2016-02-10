@@ -9,7 +9,7 @@
 			            <h2 class="post-title">
                             <a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
                         </h2>
-						{{ post.text|linebreaks }}
+						{{ post.text|linebreaks|truncatechars:25 }}
 				
 					<p class="post-meta">Posted by <a href="http://srinaveen.appspot.com">Srinaveen Desu</a> on {{ post.published_date }}</p>
 					<a href="{% url 'melaongo.views.post_detail' pk=post.pk %}">{{ post.approved_comments.count }}    <span class="glyphicon glyphicon-comment"></span> </a>

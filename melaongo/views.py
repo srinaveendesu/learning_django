@@ -72,7 +72,7 @@ def blog_about(request):
 
 def post_list(request):
     posts_list = Post.objects.all().filter(published_date__lte=timezone.now()).order_by('published_date').reverse()
-    paginator = Paginator(posts_list, 10)
+    paginator = Paginator(posts_list, 15)
 
     page = request.GET.get('page')
     try:
